@@ -1,0 +1,7 @@
+{
+  "name": "indicadores-economicos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
