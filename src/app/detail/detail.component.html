@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="Volver"></ion-back-button>&nbsp;&nbsp; {{indicador.nombre}}
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <div>
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Consultar por </mat-label>
+            <mat-select [(value)]="selectedType" (selectionChange)="changeSelectedType()">
+                <mat-option value="last">Últimos datos</mat-option>
+                <mat-option value="date">Una fecha determinada</mat-option>
+                <mat-option value="year">Un año determinado</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div *ngIf="selectedType == 'date'">
+        <ion-item class="full-width">
+            <ion-label>Seleccione la fecha</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY" cancelText="Cancelar" doneText="Listo"
+                (ionChange)="dateReady($event)"></ion-datetime>
+        </ion-item>
+    </div>
+
+    <div *ngIf="selectedType == 'year'">
+        <ion-item class="full-width">
+            <ion-label>Seleccione el año</ion-label>
+            <ion-datetime displayFormat="YYYY" cancelText="Cancelar" doneText="Listo" (ionChange)="yearReady($event)">
+            </ion-datetime>
+        </ion-item>
+    </div>
+
+    <ion-list>
+        <ion-item *ngFor="let item of valoresList">
+            <ion-row>
+                <ion-col>
+                    {{item.valor}}
+                </ion-col>
+                <ion-col>
+                    {{item.fecha | date:"dd/MM/yyyy"}}
+                </ion-col>
+            </ion-row>
+        </ion-item>
+    </ion-list>
+
+
+</ion-content>

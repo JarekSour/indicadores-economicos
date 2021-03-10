@@ -1,20 +1,21 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Indicadores Económicos
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <h2 class="text-center">Valores al día de hoy</h2>
+
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile *ngFor="let item of listIndicador">
+            <mat-card (click)="goToDetail(item)" class="full-width" style="padding:22px 16px 22px 16px">
+                <p>{{item.valor}}</p>
+                <p>{{item.nombre}}</p>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
 </ion-content>
